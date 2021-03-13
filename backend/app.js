@@ -79,8 +79,11 @@ app.delete('/goals/:id', async (req, res) => {
   }
 });
 
+const port = process.env.PORT || 8080;
+const mongoUrl = process.env.MONGODB_URL;
+
 mongoose.connect(
-  process.env.MONGODB_URL,
+  mongoUrl,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -91,7 +94,7 @@ mongoose.connect(
       console.error(err);
     } else {
       console.log('CONNECTED TO MONGODB!!');
-      app.listen(8080);
+      app.listen(port);
     }
   }
 );
